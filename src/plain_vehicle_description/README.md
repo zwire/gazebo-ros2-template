@@ -6,4 +6,4 @@
 * [meshes](meshes) ... STLファイルが入っています。
 * [launch](launch) ... 2つのlaunchファイルがあります。動作確認に。モデルがマズイ or 何らかのインストール不足だとここでエラーが出ます。
 
-これを思い通り制御するにはもう一つのパッケージ[plain_vehicle_control](plain_vehicle_control)からこちらを参照します。
+これを思い通り制御するにはもう一つのパッケージ[plain_vehicle_control](../plain_vehicle_control)からこちらを参照します。
