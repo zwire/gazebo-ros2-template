@@ -1,6 +1,36 @@
 # plain_vehicle_control
 
 このパッケージは作りたいものによっていろいろ頑張らないといけません。気合い入れていきましょう。  
+自分でcomponentパッケージを作る場合は以下のように作成します。  
+
+```
+cd <work_dir>/src && ros2 pkg create <pkg_name> --build-type ament_cmake --dependencies rclcpp rclcpp_components rclcpp_action <other_deps> --library-name <node_name>
+ex) ros2 pkg create plain_vehicle_control --build-type ament_cmake --dependencies rclcpp rclcpp_components rclcpp_action std_msgs --library-name effort_node
+
+# CMakeLists.txtに以下を追記
+rclcpp_components_register_node(
+  <node_name>
+  PLUGIN "<namespace::Class>"
+  EXECUTABLE <preferred_name>
+)
+
+install(
+  DIRECTORY
+    urdf
+    launch
+    worlds
+    config
+  DESTINATION 
+    share/${PROJECT_NAME}/
+)
+
+# <node_name>.hpp, <node_name>.cpp はサンプルに倣ってください。
+```
+
+componentについては別リポジトリ[ros2-template/src/custom_component/](https://github.com/husty530/ros2-template/tree/master/src/custom_component)をご覧ください。  
+初期設定がめんどいですが，一度やっちゃえばあとはラクです。  
+続いて，中に追加するディレクトリたちです。  
+
 * [config](config) ... controllerを作ります。モデルのjointに対して何を制御したいのかを記述しましょう。position, velocity, effortが使えます。詳しくは[コチラ](https://qiita.com/MoriKen/items/78b0ad8c1eae257646dd)。
 * [launch](launch) ... ほとんどそのままで良いですが，カスタマイズするときはパッケージ名とコントローラの種類を変えてください。
 * [src](src) ... 然るべきtopicを配信するとロボットを動かせます。
