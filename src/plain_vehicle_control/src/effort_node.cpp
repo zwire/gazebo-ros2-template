@@ -1,5 +1,14 @@
 #include <vector>
-#include "effort_node.hpp"
+#include <rclcpp/rclcpp.hpp>
+#include "rclcpp_components/register_node_macro.hpp"
+#include "plain_vehicle_control/effort_node.hpp"
+
+namespace plain_vehicle_control
+{
+
+EffortNode::EffortNode(
+  const rclcpp::NodeOptions& options
+) : EffortNode("", options){}
 
 EffortNode::EffortNode(
   const std::string& name_space, 
@@ -19,3 +28,7 @@ EffortNode::EffortNode(
     }
   );
 }
+
+}
+
+RCLCPP_COMPONENTS_REGISTER_NODE(plain_vehicle_control::EffortNode)
