@@ -1,0 +1,258 @@
+<?xml version="1.0" ?>
+<robot name="plain_vehicle" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<!-- materials -->
+<material name="silver">
+  <color rgba="0.700 0.700 0.700 1.000"/>
+</material>
+
+<!-- trans -->
+<transmission name="o_fr_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="o_fr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="o_fr_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="o_rr_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="o_rr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="o_rr_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="o_rl_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="o_rl">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="o_rl_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="o_fl_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="o_fl">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="o_fl_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<!-- gazebo -->
+<gazebo reference="base_link">
+  <material>Gazebo/Silver</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="wheel_rl_1">
+  <material>Gazebo/Gray</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="wheel_fl_1">
+  <material>Gazebo/Gray</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="wheel_fr_1">
+  <material>Gazebo/Gray</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="wheel_rr_1">
+  <material>Gazebo/Gray</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<!-- xacro -->
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.00020943697105553702 0.012630866610617823 0.07000000000000002" rpy="0 0 0"/>
+    <mass value="40.17043511395142"/>
+    <inertia ixx="0.61744" iyy="0.147074" izz="0.74052" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_fr_1">
+  <inertial>
+    <origin xyz="-0.012857142857143025 1.5404344466674047e-14 1.3877787807814457e-17" rpy="0 0 0"/>
+    <mass value="3.3662950681378008"/>
+    <inertia ixx="0.010574" iyy="0.0055" izz="0.0055" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.1 0.11 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/wheel_fr_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.1 0.11 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/wheel_fr_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_rr_1">
+  <inertial>
+    <origin xyz="-0.0128571428571429 1.532107773982716e-14 1.3877787807814457e-16" rpy="0 0 0"/>
+    <mass value="3.366295068137801"/>
+    <inertia ixx="0.010574" iyy="0.0055" izz="0.0055" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.1 -0.14 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/wheel_rr_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.1 -0.14 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/wheel_rr_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_rl_1">
+  <inertial>
+    <origin xyz="0.012857142857142914 -1.534883331544279e-14 -1.3877787807814457e-17" rpy="0 0 0"/>
+    <mass value="3.366295068137801"/>
+    <inertia ixx="0.010574" iyy="0.0055" izz="0.0055" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.1 -0.14 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/wheel_rl_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.1 -0.14 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/wheel_rl_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_fl_1">
+  <inertial>
+    <origin xyz="0.012857142857142817 -1.5404344466674047e-14 1.3877787807814457e-17" rpy="0 0 0"/>
+    <mass value="3.3662950681378008"/>
+    <inertia ixx="0.010574" iyy="0.0055" izz="0.0055" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.1 0.11 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/wheel_fl_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.1 0.11 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/wheel_fl_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="o_fr" type="continuous">
+  <origin xyz="-0.1 -0.11 0.07" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_fr_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="o_rr" type="continuous">
+  <origin xyz="-0.1 0.14 0.07" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_rr_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="o_rl" type="continuous">
+  <origin xyz="0.1 0.14 0.07" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_rl_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="o_fl" type="continuous">
+  <origin xyz="0.1 -0.11 0.07" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_fl_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<!-- ros2_control -->
+<ros2_control name="GazeboSystem" type="system">
+<hardware>
+    <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+</hardware>
+<joint name="o_rl">
+  <command_interface name="effort">
+    <param name="min">-10000</param>
+    <param name="max">10000</param>
+  </command_interface>
+  <state_interface name="position"/>
+  <state_interface name="velocity"/>
+  <state_interface name="effort"/>
+</joint>
+<joint name="o_rr">
+  <command_interface name="effort">
+    <param name="min">-10000</param>
+    <param name="max">10000</param>
+  </command_interface>
+  <state_interface name="position"/>
+  <state_interface name="velocity"/>
+  <state_interface name="effort"/>
+</joint>
+</ros2_control>
+
+<gazebo>
+<plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+    <robot_param>robot_description</robot_param>
+    <robot_param_node>robot_state_publisher</robot_param_node>
+    <parameters>$(find plain_vehicle_control)/config/controller.yaml</parameters>
+</plugin>
+</gazebo>
+
+</robot>

@@ -1,0 +1,140 @@
+<?xml version="1.0" ?>
+<robot name="plain_vehicle" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find plain_vehicle_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find plain_vehicle_description)/urdf/plain_vehicle.trans" />
+<xacro:include filename="$(find plain_vehicle_description)/urdf/plain_vehicle.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.00020943697105553702 0.012630866610617823 0.07000000000000002" rpy="0 0 0"/>
+    <mass value="40.17043511395142"/>
+    <inertia ixx="0.61744" iyy="0.147074" izz="0.74052" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_fr_1">
+  <inertial>
+    <origin xyz="-0.012857142857143025 1.5404344466674047e-14 1.3877787807814457e-17" rpy="0 0 0"/>
+    <mass value="3.3662950681378008"/>
+    <inertia ixx="0.010574" iyy="0.0055" izz="0.0055" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.1 0.11 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/wheel_fr_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.1 0.11 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/wheel_fr_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_rr_1">
+  <inertial>
+    <origin xyz="-0.0128571428571429 1.532107773982716e-14 1.3877787807814457e-16" rpy="0 0 0"/>
+    <mass value="3.366295068137801"/>
+    <inertia ixx="0.010574" iyy="0.0055" izz="0.0055" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.1 -0.14 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/wheel_rr_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.1 -0.14 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/wheel_rr_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_rl_1">
+  <inertial>
+    <origin xyz="0.012857142857142914 -1.534883331544279e-14 -1.3877787807814457e-17" rpy="0 0 0"/>
+    <mass value="3.366295068137801"/>
+    <inertia ixx="0.010574" iyy="0.0055" izz="0.0055" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.1 -0.14 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/wheel_rl_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.1 -0.14 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/wheel_rl_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_fl_1">
+  <inertial>
+    <origin xyz="0.012857142857142817 -1.5404344466674047e-14 1.3877787807814457e-17" rpy="0 0 0"/>
+    <mass value="3.3662950681378008"/>
+    <inertia ixx="0.010574" iyy="0.0055" izz="0.0055" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.1 0.11 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/wheel_fl_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.1 0.11 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find plain_vehicle_description)/meshes/wheel_fl_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="o_fr" type="continuous">
+  <origin xyz="-0.1 -0.11 0.07" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_fr_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="o_rr" type="continuous">
+  <origin xyz="-0.1 0.14 0.07" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_rr_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="o_rl" type="continuous">
+  <origin xyz="0.1 0.14 0.07" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_rl_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="o_fl" type="continuous">
+  <origin xyz="0.1 -0.11 0.07" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="wheel_fl_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+</robot>
