@@ -34,8 +34,11 @@ componentについては別リポジトリ[ros2-template/src/custom_component/](
 * [config](config) ... controllerを作ります。モデルのjointに対して何を制御したいのかを記述しましょう。position, velocity, effortが使えます。詳しくは[コチラ](https://qiita.com/MoriKen/items/78b0ad8c1eae257646dd)。
 * [launch](launch) ... ほとんどそのままで良いですが，カスタマイズするときはパッケージ名とコントローラの種類を変えてください。
 * [src](src) ... 然るべきtopicを配信するとロボットを動かせます。
-* [urdf](urdf) ... .urdfファイルを新たに作成する必要があります。中身は[tricycle_description/urdf](../tricycle_description/urdf)の4つのファイルをまとめた感じです。末尾にros2_controlと書いたところがあるので，そこだけcontrollerに対応するように書き足してください。他にも，mass, transなど若干。
-* [world](world) ... これは何でもいいと思います。
+* [urdf](urdf) ... .urdfファイルを新たに作成する必要があります。中身は[tricycle_description/urdf](../tricycle_description/urdf)の4つのファイルをまとめた感じです。末尾にros2_controlと書いたところがあるので，そこだけcontrollerに対応するように書き足してください。他にも，mass, transなど若干いじりました。
+* [world](world) ... これは何でもいいと思います。  
+
+以上のものは慣れてきたらurdfを手書きすればよいです。  
+とりあえずここでは雛型ということで自動生成されたものを置きました。  
 
 colcon buildでビルドに成功したら，以下のコマンドで実行します。  
 ```
@@ -44,6 +47,10 @@ ros2 launch tricycle_control tricycle_control.launch.py
 # terminal2: execute C++ node
 ros2 run tricycle_control exe
 ```
+操作方法 ([control_node.cpp](src/control_node.cpp))  
+* トルク印加 ... w(前進)，x(後進)
+* ハンドル操作 ... a(左)，d(右)
+* リセット ... s
 
 注) 筆者の環境ではたまにデーモンが正常終了できずに居座り続けることがありました。
 gazebo-ros2-controlのバグらしいです。
