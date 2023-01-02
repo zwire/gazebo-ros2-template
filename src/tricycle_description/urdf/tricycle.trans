@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<robot name="tricycle" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<transmission name="j_handle_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="j_handle">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="j_handle_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="j_f_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="j_f">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="j_f_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="j_rl_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="j_rl">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="j_rl_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="j_rr_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="j_rr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="j_rr_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+</robot>

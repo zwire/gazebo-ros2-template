@@ -1,0 +1,328 @@
+<?xml version="1.0" ?>
+<robot name="tricycle" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<!-- trans -->
+<transmission name="j_handle_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="j_handle">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="j_handle_actr">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="j_f_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="j_f">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="j_f_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="j_rl_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="j_rl">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="j_rl_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="j_rr_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="j_rr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="j_rr_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<!-- gazebo -->
+<gazebo reference="base_link">
+  <material>Gazebo/BlueTransparent</material>
+  <mu1>1.0</mu1>
+  <mu2>1.0</mu2>
+  <self_collide>true</self_collide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="f_link_1">
+  <material>Gazebo/BlueTransparent</material>
+  <mu1>1.0</mu1>
+  <mu2>1.0</mu2>
+  <self_collide>true</self_collide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="r_link_1">
+  <material>Gazebo/BlueTransparent</material>
+  <mu1>1.0</mu1>
+  <mu2>1.0</mu2>
+  <self_collide>true</self_collide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="r_link_2">
+  <material>Gazebo/BlueTransparent</material>
+  <mu1>1.0</mu1>
+  <mu2>1.0</mu2>
+  <self_collide>true</self_collide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="wheel_link_1">
+  <material>Gazebo/GrayTransparent</material>
+  <mu1>1.0</mu1>
+  <mu2>1.0</mu2>
+  <self_collide>true</self_collide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="wheel_link_3">
+  <material>Gazebo/GrayTransparent</material>
+  <mu1>1.0</mu1>
+  <mu2>1.0</mu2>
+  <self_collide>true</self_collide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="wheel_link_2">
+  <material>Gazebo/GrayTransparent</material>
+  <mu1>1.0</mu1>
+  <mu2>1.0</mu2>
+  <self_collide>true</self_collide>
+  <gravity>true</gravity>
+</gazebo>
+
+<!-- xacro -->
+<link name="base_link">
+  <inertial>
+    <origin xyz="1.993345934051113e-08 0.05735336805919026 0.22395063421700434" rpy="0 0 0"/>
+    <mass value="102.972072410784"/>
+    <inertia ixx="55.976594" iyy="25.061125" izz="69.219522" ixy="9e-06" iyz="-5.006304" ixz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="f_link_1">
+  <inertial>
+    <origin xyz="0.00010671579673111687 0.00024063964656861891 -0.059876870196363396" rpy="0 0 0"/>
+    <mass value="2.2508832153138454"/>
+    <inertia ixx="0.002498" iyy="0.003977" izz="0.002281" ixy="-0.0" iyz="1e-05" ixz="4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 0.3 -0.15" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/f_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 0.3 -0.15" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/f_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="r_link_1">
+  <inertial>
+    <origin xyz="5.551115123125783e-17 5.551115123125783e-17 -0.05689315337390689" rpy="0 0 0"/>
+    <mass value="2.461461267480099"/>
+    <inertia ixx="0.00286" iyy="0.004339" izz="0.002449" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.2 -0.25 -0.15" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/r_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="-0.2 -0.25 -0.15" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/r_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="r_link_2">
+  <inertial>
+    <origin xyz="0.0 5.551115123125783e-17 -0.05689315337390684" rpy="0 0 0"/>
+    <mass value="2.461461267480099"/>
+    <inertia ixx="0.00286" iyy="0.004339" izz="0.002449" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.2 -0.25 -0.15" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/r_link_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="0.2 -0.25 -0.15" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/r_link_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_link_1">
+  <inertial>
+    <origin xyz="0.02500027737313759 -7.008023028554078e-08 6.036837696399289e-16" rpy="0 0 0"/>
+    <mass value="1.4001768616333023"/>
+    <inertia ixx="0.000968" iyy="0.000725" izz="0.000725" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.024838 0.299634 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/wheel_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="0.024838 0.299634 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/wheel_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_link_3">
+  <inertial>
+    <origin xyz="-0.024999999999659295 1.2491128131841833e-09 6.036837696399289e-16" rpy="0 0 0"/>
+    <mass value="1.4001768616333023"/>
+    <inertia ixx="0.000968" iyy="0.000725" izz="0.000725" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.225 -0.25 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/wheel_link_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="-0.225 -0.25 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/wheel_link_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_link_2">
+  <inertial>
+    <origin xyz="-0.024999999999659267 1.2491126466507296e-09 6.38378239159465e-16" rpy="0 0 0"/>
+    <mass value="1.4001768616333023"/>
+    <inertia ixx="0.000968" iyy="0.000725" izz="0.000725" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.175 -0.25 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/wheel_link_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="0.175 -0.25 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/wheel_link_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="j_handle" type="revolute">
+  <origin xyz="0.0 -0.3 0.15" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="f_link_1"/>
+  <axis xyz="0.0 0.0 -1.0"/>
+  <limit lower="-0.6" upper="0.6" effort="0" velocity="0"/>
+</joint>
+
+<joint name="l" type="fixed">
+  <origin xyz="0.2 0.25 0.15" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="r_link_1"/>
+</joint>
+
+<joint name="r" type="fixed">
+  <origin xyz="-0.2 0.25 0.15" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="r_link_2"/>
+</joint>
+
+<joint name="j_f" type="continuous">
+  <origin xyz="-0.024838 0.000366 -0.1" rpy="0 0 0"/>
+  <parent link="f_link_1"/>
+  <child link="wheel_link_1"/>
+  <axis xyz="-1.0 0.0 -0.0"/>
+</joint>
+
+<joint name="j_rl" type="continuous">
+  <origin xyz="0.025 0.0 -0.1" rpy="0 0 0"/>
+  <parent link="r_link_1"/>
+  <child link="wheel_link_3"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+<joint name="j_rr" type="continuous">
+  <origin xyz="0.025 0.0 -0.1" rpy="0 0 0"/>
+  <parent link="r_link_2"/>
+  <child link="wheel_link_2"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+<!-- ros2-control -->
+<ros2_control name="GazeboSystem" type="system">
+<hardware>
+    <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+</hardware>
+<joint name="j_handle">
+  <command_interface name="position">
+    <param name="min">-0.6</param>
+    <param name="max">0.6</param>
+  </command_interface>
+  <state_interface name="position"/>
+</joint>
+<joint name="j_rl">
+  <command_interface name="effort">
+    <param name="min">-100</param>
+    <param name="max">100</param>
+  </command_interface>
+  <state_interface name="position"/>
+  <state_interface name="velocity"/>
+  <state_interface name="effort"/>
+</joint>
+<joint name="j_rr">
+  <command_interface name="effort">
+    <param name="min">-100</param>
+    <param name="max">100</param>
+  </command_interface>
+  <state_interface name="position"/>
+  <state_interface name="velocity"/>
+  <state_interface name="effort"/>
+</joint>
+</ros2_control>
+
+<gazebo>
+<plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+    <robot_param>robot_description</robot_param>
+    <robot_param_node>robot_state_publisher</robot_param_node>
+    <parameters>$(find tricycle_control)/config/controller.yaml</parameters>
+</plugin>
+</gazebo>
+
+</robot>

@@ -1,0 +1,194 @@
+<?xml version="1.0" ?>
+<robot name="tricycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find tricycle_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find tricycle_description)/urdf/tricycle.trans" />
+<xacro:include filename="$(find tricycle_description)/urdf/tricycle.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="1.993345934051113e-08 0.05735336805919026 0.22395063421700434" rpy="0 0 0"/>
+    <mass value="873.972072410784"/>
+    <inertia ixx="55.976594" iyy="25.061125" izz="69.219522" ixy="9e-06" iyz="-5.006304" ixz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="f_link_1">
+  <inertial>
+    <origin xyz="0.00010671579673111687 0.00024063964656861891 -0.059876870196363396" rpy="0 0 0"/>
+    <mass value="2.2508832153138454"/>
+    <inertia ixx="0.002498" iyy="0.003977" izz="0.002281" ixy="-0.0" iyz="1e-05" ixz="4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 0.3 -0.15" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/f_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 0.3 -0.15" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/f_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="r_link_1">
+  <inertial>
+    <origin xyz="5.551115123125783e-17 5.551115123125783e-17 -0.05689315337390689" rpy="0 0 0"/>
+    <mass value="2.461461267480099"/>
+    <inertia ixx="0.00286" iyy="0.004339" izz="0.002449" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.2 -0.25 -0.15" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/r_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.2 -0.25 -0.15" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/r_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="r_link_2">
+  <inertial>
+    <origin xyz="0.0 5.551115123125783e-17 -0.05689315337390684" rpy="0 0 0"/>
+    <mass value="2.461461267480099"/>
+    <inertia ixx="0.00286" iyy="0.004339" izz="0.002449" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.2 -0.25 -0.15" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/r_link_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.2 -0.25 -0.15" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/r_link_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_link_1">
+  <inertial>
+    <origin xyz="0.02500027737313759 -7.008023028554078e-08 6.036837696399289e-16" rpy="0 0 0"/>
+    <mass value="1.4001768616333023"/>
+    <inertia ixx="0.000968" iyy="0.000725" izz="0.000725" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.024838 0.299634 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/wheel_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.024838 0.299634 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/wheel_link_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_link_3">
+  <inertial>
+    <origin xyz="-0.024999999999659295 1.2491128131841833e-09 6.036837696399289e-16" rpy="0 0 0"/>
+    <mass value="1.4001768616333023"/>
+    <inertia ixx="0.000968" iyy="0.000725" izz="0.000725" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.225 -0.25 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/wheel_link_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.225 -0.25 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/wheel_link_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel_link_2">
+  <inertial>
+    <origin xyz="-0.024999999999659267 1.2491126466507296e-09 6.38378239159465e-16" rpy="0 0 0"/>
+    <mass value="1.4001768616333023"/>
+    <inertia ixx="0.000968" iyy="0.000725" izz="0.000725" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.175 -0.25 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/wheel_link_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.175 -0.25 -0.05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tricycle_description)/meshes/wheel_link_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="j_handle" type="continuous">
+  <origin xyz="0.0 -0.3 0.15" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="f_link_1"/>
+  <axis xyz="0.0 0.0 -1.0"/>
+</joint>
+
+<joint name="l" type="fixed">
+  <origin xyz="0.2 0.25 0.15" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="r_link_1"/>
+</joint>
+
+<joint name="r" type="fixed">
+  <origin xyz="-0.2 0.25 0.15" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="r_link_2"/>
+</joint>
+
+<joint name="j_f" type="continuous">
+  <origin xyz="-0.024838 0.000366 -0.1" rpy="0 0 0"/>
+  <parent link="f_link_1"/>
+  <child link="wheel_link_1"/>
+  <axis xyz="-1.0 0.0 -0.0"/>
+</joint>
+
+<joint name="j_rl" type="continuous">
+  <origin xyz="0.025 0.0 -0.1" rpy="0 0 0"/>
+  <parent link="r_link_1"/>
+  <child link="wheel_link_3"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+<joint name="j_rr" type="continuous">
+  <origin xyz="0.025 0.0 -0.1" rpy="0 0 0"/>
+  <parent link="r_link_2"/>
+  <child link="wheel_link_2"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+</robot>
