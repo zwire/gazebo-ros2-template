@@ -45,27 +45,30 @@ def generate_launch_description():
     ) 
 
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
-                        arguments=['-topic', 'robot_description',
-                                   '-entity', robot_name_in_model,
-                                   '-x', spawn_x_val,
-                                   '-y', spawn_y_val,
-                                   '-z', spawn_z_val,
-                                   '-Y', spawn_yaw_val,
-                                   ],
-                        output='screen')
+        arguments=[
+            '-topic', 'robot_description',
+            '-entity', robot_name_in_model,
+            '-x', spawn_x_val,
+            '-y', spawn_y_val,
+            '-z', spawn_z_val,
+            '-Y', spawn_yaw_val,
+        ],
+        output='screen'
+    )
 
+    # --set-state start の部分はhumble以降では --set-state active になります。
     load_joint_state_controller = ExecuteProcess(
-        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'joint_state_broadcaster'],
+        cmd=['ros2', 'control', 'load_controller', '--set-state', 'start', 'joint_state_broadcaster'],
         output='screen'
     )
 
     load_position_controller = ExecuteProcess(
-        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'position_controllers'],
+        cmd=['ros2', 'control', 'load_controller', '--set-state', 'start', 'position_controllers'],
         output='screen'
     )
 
     load_effort_controller = ExecuteProcess(
-        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'effort_controllers'],
+        cmd=['ros2', 'control', 'load_controller', '--set-state', 'start', 'effort_controllers'],
         output='screen'
     )
 
