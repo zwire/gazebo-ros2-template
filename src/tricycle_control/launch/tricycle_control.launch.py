@@ -55,20 +55,19 @@ def generate_launch_description():
         ],
         output='screen'
     )
-
-    # --set-state start の部分はhumble以降では --set-state active になります。
+    
     load_joint_state_controller = ExecuteProcess(
-        cmd=['ros2', 'control', 'load_controller', '--set-state', 'start', 'joint_state_broadcaster'],
+        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'joint_state_broadcaster'],
         output='screen'
     )
 
     load_position_controller = ExecuteProcess(
-        cmd=['ros2', 'control', 'load_controller', '--set-state', 'start', 'position_controllers'],
+        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'position_controllers'],
         output='screen'
     )
 
     load_effort_controller = ExecuteProcess(
-        cmd=['ros2', 'control', 'load_controller', '--set-state', 'start', 'effort_controllers'],
+        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'effort_controllers'],
         output='screen'
     )
 
