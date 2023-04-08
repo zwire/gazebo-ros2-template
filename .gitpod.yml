@@ -11,5 +11,5 @@ tasks:
       sudo apt update && sudo apt upgrade -y && sudo apt install -y ros-${DISTRO}-desktop python3-argcomplete ros-dev-tools python3-colcon-common-extensions &&  \
       echo "source /opt/ros/${DISTRO}/setup.bash" >> ~/.bashrc && source ~/.bashrc && \
       sudo apt install -y gazebo ros-${DISTRO}-gazebo-* ros-${DISTRO}-joint-state-publisher* && \
-      pip install empy catkin_pkg lark numpy xacro && colcon build && \
+      pip install empy catkin_pkg lark numpy xacro lxml && colcon build && \
       echo "source /workspace/gazebo-ros2-template/install/setup.bash" >> ~/.bashrc && source ~/.bashrc
